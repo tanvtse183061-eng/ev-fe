@@ -1,5 +1,4 @@
 /* Reset */
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +8,16 @@
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
+}
+
+/* Main container để chứa full-width content */
+#root {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -17,6 +26,14 @@ body {
   color: #111;
   margin: 0;
   padding: 0;
+}
+
+/* App component */
+.app {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 /* ---------- Header ---------- */
@@ -99,10 +116,11 @@ body {
 /* ---------- Banner ---------- */
 .anhnen {
   width: 100%;
-  height: 700px;
+  height: 100vh;
+  min-height: 600px;
   position: relative;
   margin-top: 90px;
-  /* tránh header cố định che phần banner */
+  margin-left: 0;
   overflow: hidden;
 }
 
@@ -110,8 +128,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
-  
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* overlay */
@@ -136,23 +157,31 @@ body {
   text-align: center;
   color: white;
   padding: 0 20px;
-  width: min(1100px, 92%);
+  width: 90%;
+  max-width: 1000px;
+  box-sizing: border-box;
 }
 
 .anhnen-content h1 {
-  font-size: 80px;
+  font-size: clamp(36px, 8vw, 80px);
   line-height: 0.95;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 14px;
+  word-break: break-word;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .anhnen-content p {
-  font-size: 28px;
+  font-size: clamp(16px, 3vw, 28px);
   margin-bottom: 28px;
   text-transform: uppercase;
   letter-spacing: 2px;
+  word-break: break-word;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* button */
@@ -175,17 +204,35 @@ body {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1100px) {
-  .anhnen-content h1 {
-    font-size: 56px;
-  }
-
-  .anhnen-content p {
-    font-size: 20px;
-  }
-
+/* Large screens */
+@media (max-width: 1400px) {
   .anhnen {
-    height: 800px;
+    height: 80vh;
+    min-height: 500px;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 1100px) {
+  .anhnen {
+    height: 70vh;
+    min-height: 450px;
+  }
+  
+  .anhnen-content {
+    padding: 0 30px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .anhnen {
+    height: 60vh;
+    min-height: 400px;
+  }
+  
+  .anhnen-content {
+    padding: 0 25px;
   }
 }
 @media (max-width: 768px) {
@@ -207,15 +254,49 @@ body {
   }
 
   .anhnen {
-    margin-top: -70px;
-    height: 700px;
+    margin-top: 70px;
+    height: 100vh;
+    min-height: 400px;
+    margin-left: 0;
+    width: 100%;
   }
 
-  .anhnen-content h1 {
-    font-size: 36px;
+  .anhnen-content {
+    padding: 0 15px;
   }
 
-  .anhnen-content p {
-    font-size: 15px;
+  .learnMore a {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 8px 12px;
+    height: 60px;
+  }
+  
+  .anhnen {
+    margin-top: 60px;
+    height: 80vh;
+    min-height: 350px;
+  }
+  
+  .anhnen-content {
+    padding: 0 10px;
+  }
+  
+  .learnMore a {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+/* Ultra wide screens */
+@media (min-width: 1920px) {
+  .anhnen-content {
+    max-width: 1400px;
   }
 }
