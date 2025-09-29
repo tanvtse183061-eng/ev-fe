@@ -1,31 +1,32 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
+
 export default function Nvar() {
-    return (
-        
-        <div className="nav-container">
-              
-           <nav className="navbar">
-              
-            <ul>
-                <li><Link to="/home">Home</Link></li>
-                <li><a herf="#">Services</a></li>
-                <li><a herf="#">Products</a></li>
-            </ul>
-                <Link to="/login">
-                <button className='sign'>
-                    SIGN IN
-                </button>
-                </Link>
-                <div className="Icon-nav">
-                    <FontAwesomeIcon icon={faUser} />
-                </div>
-                   
-           </nav>
-             <div className='bar'> <FontAwesomeIcon icon={faBars} size="2x" /></div>
-        </div>
-        
-    )
+  return (
+    <header className="nav-container">
+      {/* Logo bên trái */}
+      <div className="logo">LOGO</div>
+
+      {/* Menu ở giữa */}
+      <nav className="navbar">
+        <ul>
+          <li><Link to="/home">Home</Link></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Products</a></li>
+        </ul>
+      </nav>
+
+      {/* Actions bên phải */}
+      <div className="actions">
+        <Link to="/login" className="sign">SIGN IN</Link>
+        <FontAwesomeIcon icon={faUser} className="icon-nav" />
+      </div>
+
+      {/* Icon menu bar (chỉ hiện ở mobile) */}
+      <div className="bar">
+        <FontAwesomeIcon icon={faBars} size="2x" />
+      </div>
+    </header>
+  );
 }
