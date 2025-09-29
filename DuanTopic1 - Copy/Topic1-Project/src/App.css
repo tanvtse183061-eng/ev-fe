@@ -185,7 +185,7 @@ body {
   }
 
   .anhnen {
-    height: 600px;
+    height: 800px;
   }
 }
 @media (max-width: 768px) {
@@ -207,8 +207,8 @@ body {
   }
 
   .anhnen {
-    margin-top: 70px;
-    height: 520px;
+    margin-top: -70px;
+    height: 700px;
   }
 
   .anhnen-content h1 {
