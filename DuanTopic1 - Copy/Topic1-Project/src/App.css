@@ -446,9 +446,8 @@ width: 100%;
     max-width: 1400px;
     margin: 0 auto;
   }
-<<<<<<< Updated upstream
-=======
 }
+
 .body {
   margin-top: 2rem;
   padding: 0;
@@ -456,5 +455,4 @@ width: 100%;
   max-width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
->>>>>>> Stashed changes
 }
