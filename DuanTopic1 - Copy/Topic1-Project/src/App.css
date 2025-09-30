@@ -13,6 +13,7 @@ body {
   height: 100%;
   overflow-x: hidden;
   
+  
 }
 
 /* Main container để chứa full-width content */
@@ -54,7 +55,7 @@ body {
   position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 99.3%;
     height: 100px;
     background: black;
     padding: 12px 32px;
@@ -62,6 +63,7 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
+    border-radius:2% ;
 }
 .app {
   padding-top: 150px;
@@ -136,6 +138,8 @@ width: 100%;
   position: relative;
   overflow-y: hidden;
   margin: 0;
+  margin-top: 800px;
+
   /* Xóa margin-top */
 }
 
@@ -250,10 +254,30 @@ width: 100%;
   flex-wrap: nowrap;
   width: 100%;
   box-sizing: border-box;
+
+}
+.car-body2{
+  display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 3rem;
+    max-width: 100%;
+    margin: 0;
+    flex-wrap: nowrap;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .car-body img {
   width: 100%;
+  max-width: none;
+  height: 16rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+.car-body2 img{
+width: 100%;
   max-width: none;
   height: 16rem;
   object-fit: cover;
@@ -272,10 +296,28 @@ width: 100%;
   max-width: none;
   margin: 0;
 }
+.minio,.vf3,.vf7{
+  overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    padding: 1.5rem;
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    margin: 0;
+}
+
 
 .herio:hover, .limo:hover, .vf6:hover {
   transform: translateY(-0.5rem);
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.minio:hover,.vf3:hover,.vf7:hover{
+  transform: translateY(-0.5rem);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .herio img, .limo img, .vf6 img {
@@ -284,8 +326,17 @@ width: 100%;
   width: 100%;
   height: auto;
 }
+.minio img,.vf3 img,.vf7 img {
+  transition: transform 0.7s ease;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: auto;
+}
 
 .herio:hover img, .limo:hover img, .vf6:hover img {
+  transform: scale(1.05);
+}
+.minio:hover img,.vf3:hover img,.vf7:hover img{
   transform: scale(1.05);
 }
 .name-car {
@@ -302,7 +353,7 @@ width: 100%;
   font-family: 'Inter', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #e74c3c;
+  color: black;
   margin: 0;
   text-align: center;
   width: 100%;
