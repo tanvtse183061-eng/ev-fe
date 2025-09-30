@@ -241,21 +241,21 @@ width: 100%;
 }
 .car-body {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
-  gap: 3rem;
-  padding: 2rem 1rem;
-  max-width: 80rem;
-  margin: 0 auto;
-  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem 3rem;
+  max-width: 100%;
+  margin: 0;
+  flex-wrap: nowrap;
   width: 100%;
   box-sizing: border-box;
 }
 
 .car-body img {
   width: 100%;
-  max-width: 25rem;
-  height: auto;
+  max-width: none;
+  height: 16rem;
   object-fit: cover;
   border-radius: 0.5rem;
 }
@@ -265,12 +265,12 @@ width: 100%;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: white;
-  padding: 1rem;
+  padding: 1.5rem;
   text-align: center;
   flex: 1;
-  min-width: 18rem;
-  max-width: 25rem;
-  margin: 0 auto;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
 }
 
 .herio:hover, .limo:hover, .vf6:hover {
@@ -290,9 +290,9 @@ width: 100%;
 }
 .name-car {
   font-family: 'Inter', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin: 1rem 0 0.5rem;
+  margin: 1.5rem 0 0.75rem;
   color: #333;
   text-align: center;
   width: 100%;
@@ -300,7 +300,7 @@ width: 100%;
 
 .price-car {
   font-family: 'Inter', sans-serif;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #e74c3c;
   margin: 0;
@@ -310,6 +310,29 @@ width: 100%;
 
 
 /* ---------- Responsive ---------- */
+/* Large desktop */
+@media (min-width: 1200px) {
+  .car-body {
+    padding: 2rem 4rem;
+    gap: 2.5rem;
+  }
+  
+  .car-body img {
+    height: 18rem;
+  }
+}
+
+/* Medium desktop */
+@media (max-width: 1199px) and (min-width: 769px) {
+  .car-body {
+    padding: 2rem 2rem;
+    gap: 1.5rem;
+  }
+  
+  .car-body img {
+    height: 14rem;
+  }
+}
 /* Large screens */
 /* Laptop (dưới 1400px) */
 @media (max-width: 1400px) {
@@ -387,12 +410,17 @@ width: 100%;
     padding: 1rem 0.5rem;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
   .herio, .limo, .vf6 {
     min-width: 15rem;
     max-width: 20rem;
     width: 100%;
+  }
+
+  .car-body img {
+    height: 12rem;
   }
 }
 
