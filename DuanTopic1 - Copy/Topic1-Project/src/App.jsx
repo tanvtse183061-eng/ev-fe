@@ -4,6 +4,7 @@ import Home from './Component/Nvabar/Home';
 import Login from './Pages/Login/Login';
 import Nvar from './Component/Nvabar/Nvar';
 import Picture from './Component/Nvabar/Picture';
+import Picturebody from './Component/Body/Piturebody'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
 
@@ -17,8 +18,10 @@ function App() {
             <>
               <Nvar />
               <Picture />
+              <Picturebody />
             </>
           } />
+          
           <Route path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
