@@ -276,6 +276,7 @@ font-size: 30px;
 
 /* ---------- Responsive ---------- */
 /* Large screens */
+/* Laptop (dưới 1400px) */
 @media (max-width: 1400px) {
   .anhnen {
     height: 80vh;
@@ -283,36 +284,41 @@ font-size: 30px;
   }
 }
 
-/* Medium screens */
+/* Màn hình trung bình (dưới 1100px) */
 @media (max-width: 1100px) {
   .anhnen {
-    height: 80vh;
+    height: 75vh;
     min-height: 450px;
   }
-  
+
   .anhnen-content {
     padding: 0 30px;
   }
 }
 
-/* Tablet */
+/* Tablet (dưới 900px) */
 @media (max-width: 900px) {
   .anhnen {
-    height: 80vh;
+    height: 70vh;
     min-height: 400px;
   }
-  
+
   .anhnen-content {
     padding: 0 25px;
+    text-align: center;
   }
 }
+
+/* Mobile (dưới 768px) */
 @media (max-width: 768px) {
   .navbar {
-    display: none; /* Ẩn menu ở màn nhỏ */
+    display: none;
+    /* Ẩn menu */
   }
 
   .bar {
-    display: block; /* Hiện icon bar */
+    display: block;
+    /* Icon bar menu */
   }
 
   .nav-container {
@@ -320,15 +326,10 @@ font-size: 30px;
     height: 70px;
   }
 
-  .logo {
-    font-size: 20px;
-  }
-
   .anhnen {
     margin-top: 70px;
     height: 100vh;
     min-height: 400px;
-    margin-left: 0;
     width: 100%;
   }
 
@@ -342,36 +343,38 @@ font-size: 30px;
   }
 }
 
-/* Small mobile */
+/* Small mobile (dưới 480px) */
 @media (max-width: 480px) {
   .nav-container {
     padding: 8px 12px;
     height: 60px;
   }
-  
+
   .anhnen {
     margin-top: 60px;
     height: 80vh;
     min-height: 350px;
   }
-  
+
   .anhnen-content {
     padding: 0 10px;
   }
-  
+
   .learnMore a {
     padding: 8px 16px;
     font-size: 12px;
   }
 }
 
-/* Ultra wide screens */
+/* Ultra wide (trên 1920px) */
 @media (min-width: 1920px) {
+  .container {
+    max-width: 1600px;
+    /* Giữ khung hợp lý, không giãn hết màn hình */
+  }
+
   .anhnen-content {
     max-width: 1400px;
+    margin: 0 auto;
   }
-}
-.body {
-  margin-top: 50px;
- 
 }
