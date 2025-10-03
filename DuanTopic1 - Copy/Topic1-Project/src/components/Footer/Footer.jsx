@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import VinFastLogo from './VinFastLogo';
+
 
 const Footer = () => {
   return (
@@ -10,17 +10,17 @@ const Footer = () => {
         <div className="footer-column">
           <h3>CÁC DÒNG SẢN PHẨM</h3>
           <ul>
-            <li><a href="#">VinFast VF e34</a></li>
-            <li><a href="#">Minio Green</a></li>
-            <li><a href="#">VinFast VF 3</a></li>
-            <li><a href="#">Herio Green</a></li>
-            <li><a href="#">VinFast VF 5</a></li>
-            <li><a href="#">Norio Green</a></li>
-            <li><a href="#">VinFast VF 6</a></li>
-            <li><a href="#">Limo Green</a></li>
-            <li><a href="#">VinFast VF 7</a></li>
-            <li><a href="#">VinFast VF 8</a></li>
-            <li><a href="#">VinFast VF 9</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
           </ul>
         </div>
 
@@ -59,9 +59,7 @@ const Footer = () => {
 
       {/* Logo và thông tin bản quyền */}
       <div className="footer-bottom">
-        <div className="footer-logo">
-          <VinFastLogo />
-        </div>
+        
         <div className="footer-info">
           <p>© 2025 vinfasthochiminhcity.com Powered by Oto360.net</p>
           <div className="stats">

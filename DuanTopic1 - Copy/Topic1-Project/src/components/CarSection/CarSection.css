@@ -137,11 +137,13 @@
 
 /* Mobile (dưới 768px) */
 @media (max-width: 768px) {
-  .te {
-    padding: 2rem 1rem 1rem;
-  }
+
+ .body{
+  margin-top: 10px;
+ }
 
   .car-body, .car-body2, .car-body3 {
+  
     gap: 1.5rem;
     padding: 1rem 0.5rem;
     flex-direction: column;
@@ -151,12 +153,13 @@
 
   .herio, .limo, .vf6, .minio, .vf7, .vf3, .macanxanh, .macantim4 {
     min-width: 15rem;
-    max-width: 20rem;
-    width: 100%;
+    max-width: 10rem;
+    
   }
 
+
   .car-body img, .car-body2 img, .car-body3 img {
-    height: 12rem;
+    height: 10rem;
   }
 }
 
