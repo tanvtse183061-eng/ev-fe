@@ -4,6 +4,8 @@ import anhnenvf6_xanh_duong from  './vf6_xanh_duong.png';
 import anhnenminio from './minio.png'
 import vf3_vang from './vf3_vang.png'
 import vf7_xam from './vf7_xam.png'
+import Macanxanh from './Macanxanh.png'
+import Macantim4 from './Macantim4.png'
 export default function body(){
     return(
         <div className="body">
@@ -44,6 +46,18 @@ export default function body(){
                     <p className='price-car'>GIÁ TỪ 269,000,000 ₫ </p>
                     </div>     
 
+            </div>
+            <div className='car-body3'>
+                <div className='macanxanh'>
+                    <img src={Macanxanh}/>
+                    <p className='name-car'>Macan thuần điện </p>
+                    <p className='price-car'>3.590.000.000 ₫  </p>
+                </div>
+                <div className='macantim4'>
+                    <img src={Macantim4} />
+                    <p className='name-car'>Macan 4 thuần điện </p>
+                    <p className='price-car'>3.740.000.000 ₫ </p>
+                </div>
             </div>
             
             
