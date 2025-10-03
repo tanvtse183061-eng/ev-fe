@@ -1,13 +1,11 @@
 
-import './App.css'
-import Home from './Component/Nvabar/Home';
-import Login from './Pages/Login/Login';
-import Nvar from './Component/Nvabar/Nvar';
-import Picture from './Component/Nvabar/Picture';
-import Picturebody from './Component/Body/Piturebody'
+import './styles/globals.css'
+import HomePage from './pages/HomePage';
+import Login from './pages/Login';
+import MainLayout from './layouts/MainLayout';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-function App() {
 
+function App() {
   return (
     <div className="app">
       <BrowserRouter>
@@ -15,14 +13,16 @@ function App() {
           <Route path="/login" element={<Login />} />
           
           <Route path="/" element={
-            <>
-              <Nvar />
-              <Picture />
-              <Picturebody />
-            </>
+            <MainLayout>
+              <HomePage />
+            </MainLayout>
           } />
           
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={
+            <MainLayout>
+              <HomePage />
+            </MainLayout>
+          } />
         </Routes>
       </BrowserRouter>
     </div>
