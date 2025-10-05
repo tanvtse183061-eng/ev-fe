@@ -1,7 +1,7 @@
 
 import './styles/globals.css'
-import HomePage from './pages/HomePage';
-import Login from './pages/Login';
+import HomePage from './Pages/HomePage';
+import Login from './Pages/Login/Login';
 import MainLayout from './layouts/MainLayout';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
