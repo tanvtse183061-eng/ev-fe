@@ -70,11 +70,12 @@ const validateForm = () =>{
                 value={formValue.username}
                 onChange={handleChange}
                 />
-                        <div className='error'>
+
+            
+             <FontAwesomeIcon icon={faCircleUser} size="1.5x" color="navy" className='icon'/>
+                             <div className='error'>
               {formError.username && <p className="error-text">{formError.username}</p>}
               </div>
-             <FontAwesomeIcon icon={faCircleUser} size="2x" color="navy" className='icon'/>
-                 
                     
                         <label htmlFor="password" className="form-label">
                             Password
@@ -86,13 +87,14 @@ const validateForm = () =>{
                             name="password"
                                 value={formValue.password}
                                 onChange={handleChange}
-                        />  <div className='error'>
-                            {formError.password && <p className="error-text">{formError.password}</p>}
-                                  </div>
+                        />  
                         <span onClick={togglePassword} style={{cursor:"pointer"}} className='icon' >
-                            <FontAwesomeIcon icon={showPassword? faEyeSlash :faEye} size="2x" color='navy'></FontAwesomeIcon>
+                            <FontAwesomeIcon icon={showPassword? faEyeSlash :faEye} size="1.5x" color='navy'></FontAwesomeIcon>
 
                         </span>
+                        <div className='error'>
+                            {formError.password && <p className="error-text">{formError.password}</p>}
+                                  </div>
                  
                                </div>
                     
@@ -107,7 +109,7 @@ const validateForm = () =>{
                         </div>
                         
         </form>    <div className='Home'>
-                    <Link to="/home"><FontAwesomeIcon icon={faHouse} size="2x" color='black' /></Link>
+                    <Link to="/home"><FontAwesomeIcon icon={faHouse} size="2x" color='gray' /></Link>
                      </div>
                 
        </div>
