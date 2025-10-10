@@ -1,10 +1,14 @@
 import './dealerstaff.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faCar, faChartBar, faUsers, faFileAlt } from '@fortawesome/free-solid-svg-icons';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { InputGroup, FormControl } from "react-bootstrap";
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { faCarSide } from "@fortawesome/free-solid-svg-icons"; 
 export default function Dealerstaff() {
     return (
-        <div className="board-dealerstaff">
+        <> <div className="board-dealerstaff">
             <div className="sidebar-card">
                 <div className="brand">
                     <h3>EVM Car</h3>
@@ -25,9 +29,32 @@ export default function Dealerstaff() {
                         <li className='bao'><FontAwesomeIcon icon={faChartBar} /> Báo cáo</li>
                     </ul>
                 </div>
-
+              
+     
                 
             </div>
+            
         </div>
+              <div className='title'>
+                <h2>Hello,Tấn</h2>
+              </div>
+              <div className='search'>
+                <InputGroup className="search-bar">
+                    <InputGroup.Text>
+                        <FontAwesomeIcon icon={faSearch} color='green' />
+                    </InputGroup.Text>
+                    <FormControl placeholder="Search " />
+                </InputGroup>
+              </div>
+              <div className='bell'>
+                <FontAwesomeIcon icon={faBell}  color='green' size='2x' className='icon'/>
+              </div>
+              <div className='car'>
+                <FontAwesomeIcon icon={faCarSide} color='green' size='2x' className='car-moving' />
+                <div className='road'></div>
+              </div>
+            
+        </>
+       
     );
 }

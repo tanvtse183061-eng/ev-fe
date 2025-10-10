@@ -61,7 +61,7 @@
 /* Menu chức năng */
 .menu {
     width: 100%;
-    transform: translateY(-300px);
+    transform: translateY(-280px);
 }
 
 .menu-title {
@@ -74,7 +74,7 @@
 
 .menu ul {
     list-style: none;
-    padding-left: -20px;
+    padding-left: 10px;
 }
 
 .menu li {
@@ -107,9 +107,94 @@ display: flex;
   color: #2E7D32; /* đổi màu chữ */
    
 }
+.title{
+    position: fixed;
+        top: 0;
+        left: 0;
+        width: 270px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 230px;
+        margin-top: -350px;
+}
+.search-bar{
+   margin-left: 700px;
+   height: 60px;
+   background: white;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+   
 
+      
 
+}
+.search{
+position: fixed;
+    width: 400px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin-top: 70px;
+    margin-left: 350px;
+}
+.search-bar input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.bell{
+    position: fixed;
+    margin-left: 1475px;
+    margin-top: -383px;
+    background-color: rgb(225, 238, 224);
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+}
+.icon{
+    margin-left: 6px;
+    margin-top: 7px;
+}
+.car{
+    position: fixed;
+        width: 300px;
+        height: 50px;
+        margin-top: 300px;
+        overflow: hidden;
+        transform: translateX(-58px);
+}
+.car-moving{
+    position: absolute;
+    left: 0;
+    animation:  drive 3s linear infinite
+    
+}
 
+@keyframes drive {
+    from {
+        left: 50px;
+    }
 
+    to {
+        left: 100%;
+    }
+   
+}
+.road {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    /* độ dày của đường */
+    background-color: #0f0f0f;
+    margin-top: 40px;
+    margin-left: 82px;
+    background-image: repeating-linear-gradient(to right,
+                #ffffff,
+                #ffffff 20px,
+                transparent 20px,
+                transparent 40px);
+}
 
 
