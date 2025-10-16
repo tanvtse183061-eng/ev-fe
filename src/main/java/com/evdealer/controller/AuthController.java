@@ -16,7 +16,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +36,8 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
     
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     
     @PostMapping("/login")
     @Transactional
@@ -84,13 +85,12 @@ public class AuthController {
             String token = jwtUtil.generateToken(user.getUsername(), role, user.getUserId().toString());
             
             // Create login response
-            LoginResponse response = new LoginResponse(
-                token,
-                jwtUtil.getExpirationTime(),
-                user.getUserId().toString(),
-                user.getUsername(),
-                role
-            );
+            LoginResponse response = new LoginResponse();
+            response.setAccessToken(token);
+            response.setExpiresIn(jwtUtil.getExpirationTime());
+            response.setUserId(user.getUserId().toString());
+            response.setUsername(user.getUsername());
+            response.setRole(role);
             
             return ResponseEntity.ok(response);
             
@@ -143,10 +143,19 @@ public class AuthController {
             // Save user (password will be hashed in UserService.createUser)
             User createdUser = userService.createUser(newUser);
             
-            // Remove password hash from response for security
-            createdUser.setPasswordHash(null);
+            // Create a response map without password hash for security
+            Map<String, Object> response = new HashMap<>();
+            response.put("userId", createdUser.getUserId());
+            response.put("username", createdUser.getUsername());
+            response.put("email", createdUser.getEmail());
+            response.put("firstName", createdUser.getFirstName());
+            response.put("lastName", createdUser.getLastName());
+            response.put("phone", createdUser.getPhone());
+            response.put("address", createdUser.getAddress());
+            response.put("isActive", createdUser.getIsActive());
+            response.put("message", "User registered successfully");
             
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
             
         } catch (RuntimeException e) {
             Map<String, String> error = new HashMap<>();

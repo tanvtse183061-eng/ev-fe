@@ -5,7 +5,7 @@ import com.evdealer.entity.UserRole;
 import com.evdealer.repository.UserRepository;
 import com.evdealer.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +23,8 @@ public class UserService {
     @Autowired
     private UserRoleRepository userRoleRepository;
     
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     
     public List<User> getAllUsers() {
         try {
@@ -136,6 +137,79 @@ public class UserService {
             throw new RuntimeException("Role already exists: " + role.getRoleName());
         }
         return userRoleRepository.save(role);
+    }
+    
+    // Password Management methods
+    public String resetUserPassword(UUID userId, String newPassword) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
+        
+        String passwordToSet = (newPassword != null && !newPassword.trim().isEmpty()) 
+                ? newPassword 
+                : "password123"; // Default password
+        
+        String hashedPassword = passwordEncoder.encode(passwordToSet);
+        user.setPasswordHash(hashedPassword);
+        userRepository.save(user);
+        
+        return "Password reset successfully for user: " + user.getUsername() + 
+               (newPassword != null ? " with custom password" : " with default password");
+    }
+    
+    public String resetUserPasswordByUsername(String username, String newPassword) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found with username: " + username));
+        
+        String passwordToSet = (newPassword != null && !newPassword.trim().isEmpty()) 
+                ? newPassword 
+                : "password123"; // Default password
+        
+        String hashedPassword = passwordEncoder.encode(passwordToSet);
+        user.setPasswordHash(hashedPassword);
+        userRepository.save(user);
+        
+        return "Password reset successfully for user: " + username + 
+               (newPassword != null ? " with custom password" : " with default password");
+    }
+    
+    public String resetUserPasswordByEmail(String email, String newPassword) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+        
+        String passwordToSet = (newPassword != null && !newPassword.trim().isEmpty()) 
+                ? newPassword 
+                : "password123"; // Default password
+        
+        String hashedPassword = passwordEncoder.encode(passwordToSet);
+        user.setPasswordHash(hashedPassword);
+        userRepository.save(user);
+        
+        return "Password reset successfully for user: " + user.getUsername() + 
+               " (email: " + email + ")" +
+               (newPassword != null ? " with custom password" : " with default password");
+    }
+    
+    public java.util.Map<String, Object> bulkResetPasswords(java.util.List<UUID> userIds) {
+        java.util.Map<String, Object> result = new java.util.HashMap<>();
+        java.util.List<String> successList = new java.util.ArrayList<>();
+        java.util.List<String> errorList = new java.util.ArrayList<>();
+        
+        for (UUID userId : userIds) {
+            try {
+                String message = resetUserPassword(userId, null); // Use default password
+                successList.add(message);
+            } catch (Exception e) {
+                errorList.add("Failed to reset password for user ID " + userId + ": " + e.getMessage());
+            }
+        }
+        
+        result.put("totalRequested", userIds.size());
+        result.put("successful", successList.size());
+        result.put("failed", errorList.size());
+        result.put("successList", successList);
+        result.put("errorList", errorList);
+        
+        return result;
     }
 }
 

@@ -166,5 +166,56 @@ public class UserController {
             return ResponseEntity.badRequest().build();
         }
     }
+    
+    // Password Management endpoints
+    @PostMapping("/{userId}/reset-password")
+    @Operation(summary = "Reset user password", description = "Admin can reset password for any user")
+    public ResponseEntity<?> resetUserPassword(
+            @PathVariable @Parameter(description = "User ID") UUID userId,
+            @RequestParam(required = false) String newPassword) {
+        try {
+            String result = userService.resetUserPassword(userId, newPassword);
+            return ResponseEntity.ok().body(java.util.Map.of("message", result));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(java.util.Map.of("error", e.getMessage()));
+        }
+    }
+    
+    @PostMapping("/username/{username}/reset-password")
+    @Operation(summary = "Reset user password by username", description = "Admin can reset password for any user by username")
+    public ResponseEntity<?> resetUserPasswordByUsername(
+            @PathVariable @Parameter(description = "Username") String username,
+            @RequestParam(required = false) String newPassword) {
+        try {
+            String result = userService.resetUserPasswordByUsername(username, newPassword);
+            return ResponseEntity.ok().body(java.util.Map.of("message", result));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(java.util.Map.of("error", e.getMessage()));
+        }
+    }
+    
+    @PostMapping("/email/{email}/reset-password")
+    @Operation(summary = "Reset user password by email", description = "Admin can reset password for any user by email")
+    public ResponseEntity<?> resetUserPasswordByEmail(
+            @PathVariable @Parameter(description = "Email") String email,
+            @RequestParam(required = false) String newPassword) {
+        try {
+            String result = userService.resetUserPasswordByEmail(email, newPassword);
+            return ResponseEntity.ok().body(java.util.Map.of("message", result));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(java.util.Map.of("error", e.getMessage()));
+        }
+    }
+    
+    @PostMapping("/bulk-reset-password")
+    @Operation(summary = "Bulk reset passwords", description = "Admin can reset passwords for multiple users")
+    public ResponseEntity<?> bulkResetPasswords(@RequestBody java.util.List<UUID> userIds) {
+        try {
+            java.util.Map<String, Object> result = userService.bulkResetPasswords(userIds);
+            return ResponseEntity.ok(result);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(java.util.Map.of("error", e.getMessage()));
+        }
+    }
 }
 
